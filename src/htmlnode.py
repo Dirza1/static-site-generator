@@ -18,3 +18,19 @@ class HTMLNode():
     
     def __repr__(self):
         return f"HTMLNode: {self.tag}, {self.value}, {self.children}, {self.props}"
+
+
+class LeafNode(HTMLNode):
+    def __init__(self, tag, value, props=None):
+        super().__init__(tag=tag, value=value, children=None, props=props)
+
+    def to_html(LeafNode):
+        if LeafNode.value == "":
+            raise ValueError
+        match LeafNode.tag:
+            case None:
+                return LeafNode.value
+            case "a":
+                return f"<a {LeafNode.props.replace(":","=")}>Click me!</a>"
+            case _:
+                return f"<{LeafNode.tag}>{LeafNode.value}</{LeafNode.tag}>"
