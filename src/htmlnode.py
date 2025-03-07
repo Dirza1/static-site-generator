@@ -24,13 +24,12 @@ class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
         super().__init__(tag=tag, value=value, children=None, props=props)
 
-    def to_html(LeafNode):
-        if LeafNode.value == "":
-            raise ValueError
-        match LeafNode.tag:
-            case None:
-                return LeafNode.value
-            case "a":
-                return f"<a {LeafNode.props.replace(":","=")}>Click me!</a>"
-            case _:
-                return f"<{LeafNode.tag}>{LeafNode.value}</{LeafNode.tag}>"
+    def to_html(self):
+        if self.value is None or not self.value.strip():
+            raise ValueError("LeafNode must have a value")
+        
+        if self.tag is None:
+            return self.value
+        
+        props_html = self.props_to_html()
+        return f"<{self.tag}{props_html}>{self.value}</{self.tag}>"
