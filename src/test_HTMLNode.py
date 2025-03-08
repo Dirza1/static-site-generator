@@ -3,6 +3,7 @@ from htmlnode import HTMLNode
 from htmlnode import LeafNode
 
 class TestHTMLNode(unittest.TestCase):
+    
     def setUp(self):
         props = {
         "href": "https://www.google.com",
@@ -15,6 +16,9 @@ class TestHTMLNode(unittest.TestCase):
     
         self.leaf_p= LeafNode("p", "Hello, world!")
         self.leaf_a = LeafNode("a", "click me!", {"href": "https://www.google.com"})
+        self.leaf_empty = LeafNode(None,None,None)
+        self.leaf_tag = LeafNode(None, "raw text")
+
     def test_props_to_html_none(self):
         # Test without properties
         test_case = self.note.props_to_html()
@@ -75,7 +79,12 @@ class TestHTMLNode(unittest.TestCase):
     def test_leaf_to_html_a(self):
         self.assertEqual(self.leaf_a.to_html(), '<a href="https://www.google.com">click me!</a>')
 
-
+    def test_leaf_empty_value(self):
+        with self.assertRaises(ValueError):
+            self.leaf_empty.to_html()
+    
+    def test_leaf_empty_tag(self):
+        self.assertEqual(self.leaf_tag.to_html(), "raw text")
 
 if __name__ == "__main__":
     unittest.main()
