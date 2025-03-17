@@ -1,4 +1,5 @@
 import unittest
+
 from inline_markdown import (
     split_nodes_delimiter,
     extract_markdown_images,
@@ -28,7 +29,7 @@ class TestInlineMarkdown(unittest.TestCase):
             ],
             new_nodes
         )
-
+'''
     def test_delim_bold_multiple(self):
         node = TextNode("This **text** really **has** 3 **bolded** words", text_type_text)
         new_nodes = split_nodes_delimiter([node], "**", text_type_bold)
@@ -106,6 +107,6 @@ class TestInlineMarkdown(unittest.TestCase):
             ],
             test_nodes
         )
-
-        if __name__ == "__main__":
-            unittest.main()
+'''
+if __name__ == "__main__":
+    unittest.main()

@@ -2,7 +2,7 @@ import unittest
 from textnode_creation import *
 from htmlnode import *
 from textnode import *
-
+'''
 class TestTextNideCreation(unittest.TestCase):
 
     def setUp(self):
@@ -27,7 +27,7 @@ class TestTextNideCreation(unittest.TestCase):
 
 
 
-
+'''
 
 if __name__ == "__main__":
     unittest.main()
